@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  nodejs-app:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+       - DB_URL=mongodb://mongo-container:27017/mydb
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
